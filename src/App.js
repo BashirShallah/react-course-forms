@@ -16,6 +16,8 @@ class App extends Component {
     return (
       <div className="App">
         <input value={this.state.value} onChange={this.setValue} />
+        <hr />
+        <textarea value={this.state.value} onChange={this.setValue} />
       </div>
     );
   }
