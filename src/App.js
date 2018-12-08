@@ -5,6 +5,7 @@ class App extends Component {
   state = {
     value: 'Default',
     selectVal: "2",
+    checked: true,
   }
 
   setValue = (event) => {
@@ -19,6 +20,12 @@ class App extends Component {
     });
   }
 
+  setCheckboxValue = (event) => {
+    this.setState({
+      checked: event.target.checked
+    });
+  }
+
   render() {
     return (
       <div className="App">
@@ -30,6 +37,10 @@ class App extends Component {
           <option value="1">One</option>
           <option value="2">Two</option>
         </select>
+        <hr />
+        <label>CheckBox
+          <input type="checkbox" checked={this.state.checked} onChange={this.setCheckboxValue} />
+        </label>
       </div>
     );
   }
