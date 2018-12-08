@@ -10,48 +10,39 @@ class App extends Component {
   }
 
   setValue = (event) => {
-    this.setState({
-      value: event.target.value
-    });
-  }
+    const name = event.target.name;
+    const type = event.target.type;
+    let value = '';
 
-  setSelectValue = (event) => {
-    this.setState({
-      selectVal: event.target.value
-    });
-  }
+    if(type == 'checkbox')
+      value = event.target.checked;
+    else
+      value = event.target.value;
 
-  setCheckboxValue = (event) => {
     this.setState({
-      checked: event.target.checked
-    });
-  }
-
-  changeRadio = (event) => {
-    this.setState({
-      radioValue: event.target.value
+      [name]: value
     });
   }
 
   render() {
     return (
       <div className="App">
-        <input value={this.state.value} onChange={this.setValue} />
+        <input name="value" value={this.state.value} onChange={this.setValue} />
         <hr />
-        <textarea value={this.state.value} onChange={this.setValue} />
+        <textarea name="value" value={this.state.value} onChange={this.setValue} />
         <hr />
-        <select value={this.state.selectVal} onChange={this.setSelectValue}>
+        <select name="selectVal" value={this.state.selectVal} onChange={this.setValue}>
           <option value="1">One</option>
           <option value="2">Two</option>
         </select>
         <hr />
         <label>CheckBox
-          <input type="checkbox" checked={this.state.checked} onChange={this.setCheckboxValue} />
+          <input name="checked" type="checkbox" checked={this.state.checked} onChange={this.setValue} />
         </label>
         <hr />
-        <div onChange={this.changeRadio}>
-          <input type="radio" value="1" checked={this.state.radioValue == '1'} /> One
-          <input type="radio" value="2" checked={this.state.radioValue == '2'} /> Two
+        <div onChange={this.setValue}>
+          <input name="radioValue" type="radio" value="1" checked={this.state.radioValue == '1'} /> One
+          <input name="radioValue" type="radio" value="2" checked={this.state.radioValue == '2'} /> Two
         </div>
       </div>
     );
